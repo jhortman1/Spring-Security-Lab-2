@@ -22,9 +22,10 @@ public class BitcoinIntegrationTest {
 
     @Test
     void getPriceOfBitcoin() throws Exception {
-        mockMvc.perform(get("/price"))
+        String coin = "bitcoin";
+        mockMvc.perform(get("/price/"+coin))
                 .andDo(print())
                 .andExpect(status().isOk())
-                .andExpect(content().string(containsString("Hello the current price of Bitcoin is:")));
+                .andExpect(content().string(containsString("Hello the current price of " +coin+" is: ")));
     }
 }

@@ -13,10 +13,10 @@ public class BitCoinController {
     {
         this.bitcoinService = bitcoinService;
     }
-    @GetMapping("/price")
-    public @ResponseBody String price(String price)
+    @GetMapping("/price/{coin}")
+    public @ResponseBody String price(@PathVariable(value = "coin") String coin)
     {
-        return "Hello the current price of Bitcoin is: " + bitcoinService.getBitcoinPrice();
+        return "Hello the current price of "+ coin +" is: " + bitcoinService.getBitcoinPrice(coin);
 
     }
 }

@@ -14,8 +14,19 @@ public class BitcoinControllerUnitTest {
         BitcoinService bitcoinService = Mockito.mock(BitcoinService.class);
         String bitcoinPriceStatement = "Hello the current price of Bitcoin is: $4";
         BitCoinController bitCoinController = new BitCoinController(bitcoinService);
-        when(bitcoinService.getBitcoinPrice()).thenReturn("$4");
+        when(bitcoinService.getBitcoinPrice("Bitcoin")).thenReturn("$4");
         String actual = bitCoinController.price("$4");
+        assertEquals(bitcoinPriceStatement,actual);
+    }
+    @Test
+    void returnPriceStatementforCoin(){
+        String coin = "bitcoin";
+        String price = "$4";
+        BitcoinService bitcoinService = Mockito.mock(BitcoinService.class);
+        String bitcoinPriceStatement = "Hello the current price of "+coin+" is: "+price;
+        BitCoinController bitCoinController = new BitCoinController(bitcoinService);
+        when(bitcoinService.getBitcoinPrice(coin)).thenReturn(price);
+        String actual = bitCoinController.price(coin);
         assertEquals(bitcoinPriceStatement,actual);
     }
 }

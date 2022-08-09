@@ -9,7 +9,7 @@ public class BitcoinServiceTest {
     void priceNotNull()
     {
         BitcoinService bitcoinService = new BitcoinService();
-        String price = bitcoinService.getBitcoinPrice();
+        String price = bitcoinService.getBitcoinPrice("bitcoin");
         assertThat(price).isNotNull();
     }
 
