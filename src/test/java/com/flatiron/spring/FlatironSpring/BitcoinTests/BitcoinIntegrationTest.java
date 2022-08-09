@@ -24,7 +24,7 @@ public class BitcoinIntegrationTest {
     @Test
     void getPriceOfBitcoin() throws Exception {
         String coin = "bitcoin";
-        mockMvc.perform(get("/price/"+coin))
+        mockMvc.perform(get("api/price/"+coin))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Hello the current price of " +coin+" is: ")));
